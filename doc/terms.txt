@@ -1,0 +1,28 @@
+MIME 类型（ 又称为 medmtype 或 content type ） 是一种用来标识文件类型的机制，它与文件扩展名相对应，可以让客户瑞区分不同的内容类型，并执行不同的操作 。
+纯文本
+HTML
+XML
+XML (https://www.w3.org/XML/ ) 指 Ex tensible Markup Language （可 扩展标记语言） ，它是一种简单灵活 的 文本格式，被设计用来存储和交换数据 。 XML 的出现主要就是为了弥补 HTML的不足：对 千仅仅需要数据的请求来说，HTML 提供的信息 太过丰富了，而且不 易于重 用 。
+XML 和 HTML 一样都是标记性语言，使用标签来定义文本，但 HTML 中的标签用 于显示 内容，而 XML 中的标签只 用于定义数据 。XML 一般作为 AJAX 请求的响应格式，或是 Web API 的响应格 式。
+
+JSON
+一般并不直接使用 json 模块的 dumps(） 、
+load( ） 等方法，因为 Flask 通过包装这些
+方法提供了更方便的 jsonify(）函数 。 借助 jsonify(）函数，我们仅 需要传入数据或 参数，
+它会 对
+我们传入的参数进行序列化，转换成 JSON 字符串作为响应的主体，然后生成一个响应对象，并
+且设置正确的 MIME 类型 。
+
+
+```
+data= {
+' name ':' Grey Li ',
+' gender ':' male '
+response = make_response(json.dumps(data))
+response .mimetype = ' applicat ion/json '
+```
+jsonify(）函数接 收多种形式的 参数。 你既可以传入普通参数， 也可以传入关键字参数 。 如果
+你想要更直观一点，也可以 像使用 dumps(） 方法一样传入字典、 列 表或元组
+
+jsonify(name= ' Grey Li', gender= ' male ')
+jsonify ({name:' Grey Li', gender :'male ' })
